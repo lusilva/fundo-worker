@@ -1,0 +1,13 @@
+{
+  "name": "fundo-worker",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "get-urls": "^5.0.0",
+    "lodash": "^4.8.2",
+    "meteor-node-stubs": "~0.2.0",
+    "truncate-html": "0.0.6"
+  }
+}
