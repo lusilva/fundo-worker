@@ -9,5 +9,9 @@
     "lodash": "^4.8.2",
     "meteor-node-stubs": "~0.2.0",
     "truncate-html": "0.0.6"
+  },
+  "devDependencies": {
+    "eslint": "^2.7.0",
+    "eslint-config-google": "^0.4.0"
   }
 }
