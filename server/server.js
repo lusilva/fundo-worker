@@ -1,7 +1,7 @@
-import { Meteor } from 'meteor/meteor';
+/* global DDP JobCollection */
+import {Meteor} from 'meteor/meteor';
 import getUrls from 'get-urls';
 import truncate from 'truncate-html';
-import lodash from 'lodash';
 
 Meteor.startup(() => {
   let remote = DDP.connect(Meteor.settings.remote);
@@ -88,7 +88,6 @@ function processRefresh(jobs, events, categories, remote) {
   );
 }
 
-
 function processEventFetching(jobs, events, remote) {
   return jobs.processJobs('fetchCity',
     function(job, cb) {
@@ -111,9 +110,8 @@ function processEventFetching(jobs, events, remote) {
   );
 }
 
-
 function fetchPage(city, page, thisJob, jobs, eventCallback, doneCallback) {
-  const page_size = 50;
+  const PAGE_SIZE = 50;
   const days = 30;
   const MAX_PAGES_TO_FETCH = Meteor.settings.maxPagesPerCity || 50;
 
@@ -123,13 +121,12 @@ function fetchPage(city, page, thisJob, jobs, eventCallback, doneCallback) {
   endDate.setDate(today.getDate() + days);
   let date = formatEventfulDate(today) + "-" + formatEventfulDate(endDate);
 
-
   Meteor.http.get("http://api.eventful.com/json/events/search",
     {
       timeout: 30000,
       params: {
         app_key: Meteor.settings.eventfulAPIKey,
-        page_size: page_size,
+        page_size: PAGE_SIZE,
         date: date,
         where: city,
         within: '20',
